@@ -28,3 +28,5 @@ Key Trustee KMS
 Postgresql
 
 https://www.tutorialspoint.com/hive/
+
+schematool -help
