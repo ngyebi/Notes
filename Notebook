@@ -25,10 +25,6 @@ Zookeeper
 Key-Value Store indexer
 Key Trustee KMS
 
-Postgresql
-
-https://www.tutorialspoint.com/hive/
-
 schematool -help
 
 https://www.ansible.com/resources/get-started
