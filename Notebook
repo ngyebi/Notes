@@ -28,3 +28,18 @@ Key Trustee KMS
 schematool -help
 
 https://www.ansible.com/resources/get-started
+
+https://portal.caci.com/CherwellPortal/,DanaInfo=csmhr.caci.com,SSL+CACI#2
+https://my.caci.com/my.policy
+703-841-7800
+
+
+Dynamic Resource Pool Configuration
+
+
+hdfs dfs -setrep 2 /data/files  \\to change replication factor 2 \\default is 3
+hdfs fsck / -files -blocks 
+hdfs dfs -count /
+hdfs dfs -count -q /		\\for quota info
+
+hdfs dfs -test -e /test.txt  \\check if the file exists
