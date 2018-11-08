@@ -1,0 +1,431 @@
+Python
+https://github.com/ngyebi/scripts.git
+yum install python python-pip -y
+
+Know the basic control flow:
+	for loops
+	while loops
+	if and else
+	elif 
+projects
+	webscraping
+	perform system task
+	
+jsbeautifier
+
+help> keywords
+
+Here is a list of the 30 Python keywords.  Enter any keyword to get more help.
+
+and                 elif                if                  print
+as                  else                import              raise
+assert              except              in                  return
+break               exec                is                  try
+class               finally             lambda              while
+continue            for                 not                 with
+def                 from                or                  yield
+del                 global              pass
+
+help> topics
+Here is a list of available topics.  Enter any topic name to get more help.
+
+ASSERTION           DEBUGGING           LITERALS            SEQUENCEMETHODS2
+ASSIGNMENT          DELETION            LOOPING             SEQUENCES
+ATTRIBUTEMETHODS    DICTIONARIES        MAPPINGMETHODS      SHIFTING
+ATTRIBUTES          DICTIONARYLITERALS  MAPPINGS            SLICINGS
+AUGMENTEDASSIGNMENT DYNAMICFEATURES     METHODS             SPECIALATTRIBUTES
+BACKQUOTES          ELLIPSIS            MODULES             SPECIALIDENTIFIERS
+BASICMETHODS        EXCEPTIONS          NAMESPACES          SPECIALMETHODS
+BINARY              EXECUTION           NONE                STRINGMETHODS
+BITWISE             EXPRESSIONS         NUMBERMETHODS       STRINGS
+BOOLEAN             FILES               NUMBERS             SUBSCRIPTS
+CALLABLEMETHODS     FLOAT               OBJECTS             TRACEBACKS
+CALLS               FORMATTING          OPERATORS           TRUTHVALUE
+CLASSES             FRAMEOBJECTS        PACKAGES            TUPLELITERALS
+CODEOBJECTS         FRAMES              POWER               TUPLES
+COERCIONS           FUNCTIONS           PRECEDENCE          TYPEOBJECTS
+COMPARISON          IDENTIFIERS         PRINTING            TYPES
+COMPLEX             IMPORTING           PRIVATENAMES        UNARY
+CONDITIONAL         INTEGER             RETURNING           UNICODE
+CONTEXTMANAGERS     LISTLITERALS        SCOPING
+CONVERSIONS         LISTS               SEQUENCEMETHODS1
+
+>>> import this
+
+do not put numbers in quotes
+
+Strings
+ use len,join,find,replace,strip
+ 
+NB: cannot compare a string with a numeric value
+ 
+Modules and Libraris
+>>> import subprocess
+>>> dir(subprocess)  //to list the function that comes with the module
+
+>>> host_name = subprocess.check_output("hostname") //call the module.function(variable)
+>>> host_name
+'ngyebi1.mylabserver.com\n'
+
+pip install boto3
+
+Conditionals
+ If Statement
+>>> import platform
+>>> dir(platform)
+>>> platform.linux_distribution()
+('Red Hat Enterprise Linux Server', '7.2', 'Maipo')
+
+Loops
+>>> for number in range(1,11):
+...     if number % 2 > 0:
+...             print number
+...
+1
+3
+5
+7
+9
+
+LIST
+positions on a list are zero relative
+
+>>> partition_usage_threshold = 5
+>>> df_cmd = subprocess.check_output(['df','-k'])
+>>> print df_cmd
+>>> lines = df_cmd.splitlines()
+>>> print lines
+>>> for line in lines[1:]:
+...     columns = line.split()
+...     used_percentage = columns[4]
+...     used_percentage = used_percentage.replace('%','')
+...     if int(used_percentage) >= partition_usage_threshold:
+...             print "partition %s usage is beyond threshold at %s " % (columns[0], columns[4])
+...             #put email function here for alerts
+...
+partition /dev/xvda2 usage is beyond threshold at 51%
+
+DICTIONARIES
+>>> traffic_signal = {}
+>>> traffic_signal['red']='stop'
+>>> traffic_signal['yellow']='about to be red'
+>>> traffic_signal['green']='go'
+>>> traffic_signal = {'red':'stop','yellow':'about to be red','green':'go'}
+>>> print traffic_signal['red']
+stop
+>>> import random
+>>> results = {'heads':0,'tails':0}
+>>> for i in range(0,1000):
+...     toss = random.randint(0,2)
+...     if toss == 1:
+...             results['heads']+=1
+...     else:
+...             results['tails']+=1
+...
+>>>
+>>> for toss in results.keys():
+...     print "Coinface %s showed up %s times" %(toss, results[toss])
+...
+
+import subprocess
+users = {}
+ps_cmd = subprocess.check_output(['ps','-ef'])
+
+for line in ps_cmd.splitlines()[1:]:
+    user = line.split()[0]
+    if users.get(user):
+        users[user]+=1
+    else:
+        users[user]=1
+print "Active users on the system are " + ','.join(users.keys())
+for user, process_count in users.items():
+        print "%s is running %s processes" % (user,process_count)
+print users
+for line in ps_cmd.splitlines()[1:]:
+         user = line.split()[0]
+         users[user]=users.get(user,0)+1
+print users
+
+
+Tuples and Sets
+ Tuples are fixed size in nature whereas lists are dynamic. In other words, a tuple is immutable whereas a list is mutable.
+ You can't add elements to a tuple. Tuples have no append or extend method
+
+Exceptions
+ use except statement to catch errors
+
+Class
+faster way of developing code
+Is the grouping of a functions
+class Name must begin with a capital letter
+start a class with def __init__(self)
+vars to print out available variable in class
+
+Decorators
+wrappers ie allow one function to be passed into another function
+@parallel //to run multiple functions at the same time 
+@roles
+
+Generators
+Generators iterate without creating all values at ones ie lazy evaluation, thus reducing the amount of memory/cpu usage!
+
+Regular Expressions
+regex are special experessions for string matching
+import re
+
+Cheat sheet:
+Building Blocks
+• \d • a digit
+• \D • a non-digit
+• \s • a whitespace
+• \S • a non-whitespace
+• \w • a word
+• \W • a non-word
+• \b • a word boundary
+• . • any character
+• \ • Escape special char or start a sequence
+Repeated Characters or Patterns
+• ? • 0 or 1 time
+• + • 0 or more times
+• * • 1 or more times
+• {#} • # of times
+• {#,} • # or more times
+• {,#} • 0 to # times
+• {#, #} • # to # of times
+Specific Possible Characters
+• [xyz] • either x, y or z
+• [^xyz] • Any character besides x, y, or z
+• [a-zA-Z] • ranges of characters
+Location of Characters
+• ^ • beginning of line
+• $ • end of line
+• \A • beginning of string
+• \z • end of string
+Capturing
+• (...) • capture the pattern enclosed
+• (...|...) • capture either pattern enclosed
+
+
+Working with JSON
+import json
+curly braces acts like dictionary and square brackets acts like list
+
+Comprehension
+List Comprehension is easily creating a list of data
+
+System Automation With Fabric
+yum install fabric -y
+
+Web scraping with BeautifulSoup
+pip install bs4 lxml
+
+
+Pivot Tables using Pandas(data analytics library)
+pip install pandas
+import datetime as dt
+import pandas as pd
+import numpy as np
+
+
+
+Database connections
+import sqlite3
+yum install MySQL-python
+
+DJANGO
+ pip install virtualenv
+virtualenv webssite_env
+[root@ngyebi1 ~]# cd webssite_env/
+[root@ngyebi1 webssite_env]# source bin/activate
+(webssite_env) [root@ngyebi1 webssite_env]# deactivate
+[root@ngyebi1 webssite_env]# pwd
+/root/webssite_env
+[root@ngyebi1 webssite_env]# source bin/activate
+(webssite_env) [root@ngyebi1 webssite_env]# pwd
+/root/webssite_env
+(webssite_env) [root@ngyebi1 webssite_env]# pip install Django
+(webssite_env) [root@ngyebi1 webssite_env]# django-admin
+django-admin     django-admin.py
+(webssite_env) [root@ngyebi1 webssite_env]# django-admin.py startproject website .
+(webssite_env) [root@ngyebi1 webssite_env]# python manage.py migrate
+(webssite_env) [root@ngyebi1 webssite_env]# python manage.py startapp firstapp
+
+Webservices / APIs
+
+======================================================================================================
+Python3.6
+def function(x):
+	return x**
+	
+List is similar to arrays in java
+======================================================================================================
+open powershell and run as administrator
+Get-ExecutionPolicy
+Set-ExecutionPolicy AllSigned 
+	or 
+	Set-ExecutionPolicy Bypass -Scope Process
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+4. `choco install git -y /GitAndUnixToolsOnPath`
+5. `choco install openssh -y -params "/SSHAgentFeature"`
+6. `choco install atom -y`
+7. `choco install python3 -y`
+8. `choco install awscli -y`
+9. Restart windows
+10. `pip3 install boto3`
+11. `pip3 install ipython`
+  - If needed, install MS Visual C++ 9.0, and re-run
+12. Restart windows
+
+python -m pip install --upgrade pip
+======================================================================================================
+int()
+float(123)
+list('''list these items \from here to there''')
+
+Operators: operate or manupulate data
+
+Variable
+	must start with a letter 
+	cannot have symbols or space other than _ (underscore)
+	
+BOOLEAN operators 
+Comparing Data:
+
+			In [44]: if "monk" in "monkey":
+				...:     print("who care!")
+				...: else:
+				...:     print("I care, you jack ass!")
+				...:
+			who care!
+
+			In [45]: if "smonk" in "monkey":
+				...:     print("who care!")
+				...: else:
+				...:     print("I care, you jack ass!")
+				...:
+			I care, you jack ass! 
+			
+			
+control characters, (+ ? . * ^ $ ( ) [ ] { } | \),
+
+Python has five standard data types −
+Numbers
+String
+	str = 'Hello World!'
+
+	print str          # Prints complete string
+	print str[0]       # Prints first character of the string
+	print str[2:5]     # Prints characters starting from 3rd to 5th
+	print str[2:]      # Prints string starting from 3rd character
+	print str * 2      # Prints string two times
+	print str + "TEST" # Prints concatenated string
+List	[]
+	list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]
+	tinylist = [123, 'john']
+
+	print list          # Prints complete list
+	print list[0]       # Prints first element of the list
+	print list[1:3]     # Prints elements starting from 2nd till 3rd 
+	print list[2:]      # Prints elements starting from 3rd element
+	print tinylist * 2  # Prints list two times
+	print list + tinylist # Prints concatenated lists
+Tuple	()
+	tuple = ( 'abcd', 786 , 2.23, 'john', 70.2  )
+	tinytuple = (123, 'john')
+
+	print tuple           # Prints complete list
+	print tuple[0]        # Prints first element of the list
+	print tuple[1:3]      # Prints elements starting from 2nd till 3rd 
+	print tuple[2:]       # Prints elements starting from 3rd element
+	print tinytuple * 2   # Prints list two times
+	print tuple + tinytuple # Prints concatenated lists
+Dictionary	{}
+	dict = {}
+	dict['one'] = "This is one"
+	dict[2]     = "This is two"
+
+	tinydict = {'name': 'john','code':6734, 'dept': 'sales'}
+
+
+	print dict['one']       # Prints value for 'one' key
+	print dict[2]           # Prints value for 2 key
+	print tinydict          # Prints complete dictionary
+	print tinydict.keys()   # Prints all the keys
+	print tinydict.values() # Prints all the values
+	
+help(boto3)
+help(os.chdir)
+import re
+import cgi, cgitb
+import MySQLdb		\\pip install MySQL-python if not installed
+						python -m pip install --upgrade pip
+						downloading-visual-studio 
+						https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15
+import socket
+import xml.dom.minidom
+import xml.sax
+import tkinter		\\GUI 
+import smtplib	;import base64
+import threading; import time ;import Queue
+
+splice,split,join and iterate 
+built-in functions
+	print,len,str,float,abs,bin,round,sum,max,min,range,sorted,reversed,join,pop,copy,append,get
+Statements
+	return,del,
+	
+built-in functions can be overitten BUT not advisable
+
+def for define
+def name(): pass 
+def greet(name): print ("Hello, {0}".format(name))
+
+binary data
+bytes
+ like strings we cannot modify bytes
+ 
+bytearrays is used to modify bytes: used for images or videos
+tuple - you can't modify it but it's easy to switch between list and tuple
+	used for better performance
+	lists can be placed in a tuple, ie you can change the list in the tuple but not the tuple 
+	tuples are immutable
+sets - elements in a set are uniq and in no particular order
+frozenset - a set you can't modify
+type
+input
+
+itertool - module 
+time.sleep
+datetime
+import gzip
+import bz2
+import zipfile
+import gzip
+import bz2
+import zipfile
+import os or sys 
+import turtle
+
+Python Package index(PyPi)
+	pip3 install requests
+	
+pip3 install pipenv
+pipenv --three
+pipenv shell 
+pipenv install requests
+pipenv install boto3
+pipenv install -d ipython
+pipenv install click
+	pipenv run ipython		\\
+
+If the code is meant to be run as script then add the ff:
+	if __name__ == '__main__':
+you pass functions into other functions
+
+git clone https://github.com/ngyebi/script.py.git
+git status
+git remote -v
+
+List Comprehension
+Dictionary Comprehension
+	
