@@ -43,3 +43,6 @@ hdfs dfs -count /
 hdfs dfs -count -q /		\\for quota info
 
 hdfs dfs -test -e /test.txt  \\check if the file exists
+
+https://superuser.com/questions/12972/how-can-you-see-the-actual-hard-link-by-ls
+
